@@ -1,0 +1,121 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Coding formatting
+\lstset{ 
+    language=C++,
+    basicstyle=\small,
+    commentstyle=\color{darkgray},
+    identifierstyle=\color{blue},
+    frame=Lt,
+    tabsize=4,
+    columns=fixed,
+    keepspaces=true,
+    keywordstyle=\color{teal},
+    stringstyle=\color{orange},
+}
+
+% First page
+\title{Competitive Programming Tricks}
+\author{Andy Nguyen}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section{Quick Reminders}
+\begin{itemize}
+    \item Most test computers can run $10^7$ to $10^8$ operations per second. For $O(n^2)$ time, this means $n$ must be at most $10^4$
+    \item Python is good for combinatorics and string manipulation. C++ is good for heavy math or algorithms
+    \item $>$1 second on time means it better be optimized
+    \item Big inputs often mean linear time via dynamic programming
+    \item Space complexity isn't important. Read in the entire input first if possible
+\end{itemize}
+\newpage
+\tableofcontents
+\newpage
+\section{Scripts and Templates}
+\subsection{C++ Template}
+\begin{lstlisting}
+// <division>: <team name>
+#include<algorithm>
+#include<functional>
+#include<climits>
+#include<cmath>
+#include<cstdio>
+#include<cstdlib>
+#include<ctime>
+#include<iostream>
+#include<sstream>
+#include<iomanip>
+#include<deque>
+#include<list>
+#include<queue>
+#include<stack>
+#include<string>
+#include<vector>
+
+#define int long long
+#define double long double
+using namespace std;
+
+void solve() {
+    // Enter code here
+}
+
+#undef int
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    solve();
+    return 0;
+}
+\end{lstlisting}
+\subsection{Bash script to generate folders}
+Create A.cpp and A.py template files first before running script
+\begin{lstlisting}[language=Bash]
+for x in {A..M}
+do
+    mkdir ${x}
+    cp A.cpp ${x}/${x}.cpp
+    cp A.py ${x}/${x}.py
+done
+\end{lstlisting}
+\subsection{.vimrc}
+\begin{lstlisting}
+colo delek
+syntax on
+set number
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth
+set ruler
+set incsearch
+\end{lstlisting}
+\section{C++ Reference}
+TODO
+\section{Combinatorics}
+\subsection{Modulo and Math Operations}
+\begin{lstlisting}
+// "Mod everything between operations"
+(a + b) % c = ((a % c) + (b % c)) % c
+(a * b) % c = ((a % c) * (b % c)) % c
+(a - b) % c = ((a % c) - (b % c)) % c
+
+int power(int x, unsigned int y, int p) {
+    int res = 1;
+    x = x % p;
+    while (y > 0) {
+        if (y & 1) {
+            res = (res * x) % p;
+        }
+        y = y >> 1;
+        x = \left( x % p) * (x % p)) % p;
+    }
+    return res;
+}
+\end{lstlisting}
+
+\end{document}
